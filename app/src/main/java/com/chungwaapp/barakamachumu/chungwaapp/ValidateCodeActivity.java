@@ -1,4 +1,5 @@
 package com.chungwaapp.barakamachumu.chungwaapp;
 
-public class ValidateCodeActivity {
+public class ValidateCodeActivity  {
+    int w;
 }

@@ -14,20 +14,22 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-//textView.setOnClickListener(new View.OnClickListener(){
-//        public void onClick(View v)
-//        {
-//            Intent intent = new Intent(this, RegisterActivity.class);
-//            startActivity(intent);
-//        }
-//    });
-
+TextView register;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        register = findViewById(R.id.link_signup);
+
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, PhoneActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
     }
