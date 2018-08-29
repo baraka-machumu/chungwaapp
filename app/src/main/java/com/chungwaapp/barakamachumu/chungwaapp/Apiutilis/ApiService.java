@@ -11,6 +11,8 @@ public interface ApiService {
 
     @FormUrlEncoded
     @POST("user/register")
-    Call<RegisterResponse> userRegister(@Field("email") String email);
+    Call<RegisterResponse> userRegister(@Field("email") String email,
+                                        @Field("verification_code") String verification_code);
+
 
 }

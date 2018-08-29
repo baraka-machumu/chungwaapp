@@ -19,6 +19,7 @@ import retrofit2.Response;
 
 public class PhoneActivity extends AppCompatActivity {
     EditText email;
+    EditText verification_code;
     Button btnRegister;
 
     @Override
@@ -30,6 +31,8 @@ public class PhoneActivity extends AppCompatActivity {
 
         email = findViewById(R.id.email);
 
+        verification_code =findViewById(R.id.verification_code);
+
         btnRegister = findViewById(R.id.btnValidate);
 
 
@@ -40,9 +43,11 @@ public class PhoneActivity extends AppCompatActivity {
                 Log.d("response-register","btn clicked");
                 String emailData = email.getText().toString();
 
+                String verificationData = email.getText().toString();
+
                 ApiService service = ApiNetworkServer.getClient().create(ApiService.class);
 
-                Call<RegisterResponse> registerResponse = service.userRegister(emailData);
+                Call<RegisterResponse> registerResponse = service.userRegister(emailData,verificationData);
                 registerResponse.enqueue(new Callback<RegisterResponse>() {
                     @Override
                     public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {

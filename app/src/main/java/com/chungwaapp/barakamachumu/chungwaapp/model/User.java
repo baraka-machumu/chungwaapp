@@ -19,6 +19,9 @@ public class User {
     private String username;
     @SerializedName("seed")
     @Expose
+    private String verification_code;
+    @SerializedName("verification_code")
+    @Expose
     private Integer seed;
 
     public Integer getId() {
@@ -39,8 +42,6 @@ public class User {
         this.email = email;
     }
 
-
-
     public String getPhone() {
         return phone;
     }
@@ -59,6 +60,13 @@ public class User {
     }
 
 
+    public String getVerification_code() {
+        return verification_code;
+    }
+
+    public void setVerification_code(String verification_code) {
+        this.verification_code = verification_code;
+    }
 
     public Integer getSeed() {
         return seed;
