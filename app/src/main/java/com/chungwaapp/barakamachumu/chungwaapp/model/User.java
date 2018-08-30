@@ -8,21 +8,22 @@ public class User {
     @SerializedName("id")
     @Expose
     private Integer id;
-    @SerializedName("email")
+    @SerializedName("id")
     @Expose
     private String email;
-    @SerializedName("phone")
+    @SerializedName("email")
     @Expose
     private String phone;
-    @SerializedName("username")
+    @SerializedName("phone")
     @Expose
     private String username;
-    @SerializedName("seed")
+    @SerializedName("username")
     @Expose
     private String verification_code;
     @SerializedName("verification_code")
     @Expose
     private Integer seed;
+    @SerializedName("seed")
 
     public Integer getId() {
         return id;

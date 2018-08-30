@@ -13,6 +13,4 @@ public interface ApiService {
     @POST("user/register")
     Call<RegisterResponse> userRegister(@Field("email") String email,
                                         @Field("verification_code") String verification_code);
-
-
 }
