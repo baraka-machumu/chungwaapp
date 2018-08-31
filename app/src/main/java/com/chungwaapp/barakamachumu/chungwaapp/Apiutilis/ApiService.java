@@ -14,11 +14,8 @@ public interface ApiService {
     Call<RegisterResponse> userRegister(@Field("email") String email,
                                         @Field("verification_code") String verification_code);
 
-
     @FormUrlEncoded
-    @POST("user/register2")
-    Call<RegisterResponse> userRegister2(@Field("username") String username,
-                                        @Field("phone") String phone,
-                                         @Field("password") String password,
-                                         @Field("password") String reEnterPassword);
+    @POST("user/login")
+    Call<UserDataResponse> userLogin(@Field("email") String email, @Field("password") String password);
+
 }

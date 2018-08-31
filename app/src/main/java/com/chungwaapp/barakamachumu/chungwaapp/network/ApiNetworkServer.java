@@ -8,8 +8,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiNetworkServer {
 
-    public static final String BASE_URL = "http://192.168.43.251/chungwabackend/";
+
+    public static final String BASE_URL = "http://192.168.43.110/chungwabackend/";
     private static Retrofit retrofit = null;
+
 
     public static Retrofit getClient() {
         if (retrofit==null) {
