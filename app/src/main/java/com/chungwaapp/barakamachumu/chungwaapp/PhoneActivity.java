@@ -1,7 +1,5 @@
 package com.chungwaapp.barakamachumu.chungwaapp;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -12,11 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.chungwaapp.barakamachumu.chungwaapp.ApiUtilis.ApiService;
+import com.chungwaapp.barakamachumu.chungwaapp.Apiutilis.ApiService;
 import com.chungwaapp.barakamachumu.chungwaapp.model.RegisterResponse;
 import com.chungwaapp.barakamachumu.chungwaapp.network.ApiNetworkServer;
-
-import java.util.Random;
 
 import java.util.Random;
 

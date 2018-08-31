@@ -8,15 +8,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.chungwaapp.barakamachumu.chungwaapp.ApiUtilis.ApiService;
-import com.chungwaapp.barakamachumu.chungwaapp.model.RegisterResponse;
+import com.chungwaapp.barakamachumu.chungwaapp.Apiutilis.ApiService;
 import com.chungwaapp.barakamachumu.chungwaapp.model.UserDataResponse;
 import com.chungwaapp.barakamachumu.chungwaapp.network.ApiNetworkServer;
 import com.tumblr.remember.Remember;
