@@ -44,6 +44,8 @@
                 android:hint="Email Address"
                 android:inputType="textEmailAddress" />
 
+
+
             <Button
                 android:id="@+id/btnValidate"
                 android:layout_width="123dp"

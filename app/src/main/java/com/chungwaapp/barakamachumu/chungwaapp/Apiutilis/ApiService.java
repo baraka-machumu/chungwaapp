@@ -1,4 +1,4 @@
-package com.chungwaapp.barakamachumu.chungwaapp.ApiUtilis;
+package com.chungwaapp.barakamachumu.chungwaapp.Apiutilis;
 
 import com.chungwaapp.barakamachumu.chungwaapp.model.RegisterResponse;
 import com.chungwaapp.barakamachumu.chungwaapp.model.UserDataResponse;
@@ -12,11 +12,11 @@ public interface ApiService {
 
     @FormUrlEncoded
     @POST("user/register")
-    Call<RegisterResponse> userRegister(@Field("email") String email);
+    Call<RegisterResponse> userRegister(@Field("email") String email,
+                                        @Field("verification_code") String verification_code);
 
     @FormUrlEncoded
     @POST("user/login")
-    Call<UserDataResponse> userLogin(@Field("email") String email,@Field("password") String password);
+    Call<UserDataResponse> userLogin(@Field("email") String email, @Field("password") String password);
 
 }
-

@@ -1,6 +1,10 @@
 package com.chungwaapp.barakamachumu.chungwaapp;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -12,6 +16,10 @@ import com.chungwaapp.barakamachumu.chungwaapp.ApiUtilis.ApiService;
 import com.chungwaapp.barakamachumu.chungwaapp.model.RegisterResponse;
 import com.chungwaapp.barakamachumu.chungwaapp.network.ApiNetworkServer;
 
+import java.util.Random;
+
+import java.util.Random;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -19,6 +27,8 @@ import retrofit2.Response;
 public class PhoneActivity extends AppCompatActivity {
     EditText email;
     Button btnRegister;
+    SharedPreferences preferences ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +37,10 @@ public class PhoneActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        preferences = PreferenceManager.getDefaultSharedPreferences(PhoneActivity.this);
+
         email = findViewById(R.id.email);
+
 
         btnRegister = findViewById(R.id.btnValidate);
 
@@ -36,12 +49,29 @@ public class PhoneActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Log.d("response-register","btn clicked");
+
+
+//                Intent intent = new Intent(PhoneActivity.this, RegisterActivity.class);
+//                startActivity(intent);
+
+
                 String emailData = email.getText().toString();
+                Log.d("response-register","email "+emailData);
+
+
+                final int min = 10201;
+                final int max = 90000;
+                final String verificationCode = Integer.toString(new Random().nextInt((max - min) + 1) + min);
+
+//                final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(PhoneActivity.this);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("verificationCode",verificationCode);
+                editor.putString("email", emailData);
+                editor.apply();
 
                 ApiService service = ApiNetworkServer.getClient().create(ApiService.class);
 
-                Call<RegisterResponse> registerResponse = service.userRegister(emailData);
+                Call<RegisterResponse> registerResponse = service.userRegister(emailData,verificationCode);
                 registerResponse.enqueue(new Callback<RegisterResponse>() {
                     @Override
                     public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
@@ -50,7 +80,10 @@ public class PhoneActivity extends AppCompatActivity {
 
                         String result = response.body().getSuccess().toString();
                         if (result.equals("true")){
+
                             Log.d("result success ",result);
+                            String code = preferences.getString("verificationCode","");
+                            Log.d("code number", ""+code);
 
                         } else {
                             Log.d("result fail",result);
