@@ -16,6 +16,12 @@ public interface ApiService {
                                         @Field("verification_code") String verification_code);
 
     @FormUrlEncoded
+    @POST("user/finalregister")
+    Call<RegisterResponse> userFinalRegister(@Field("username") String username,
+                                        @Field("phone") String phone,
+                                             @Field("password") String pswd);
+
+    @FormUrlEncoded
     @POST("user/login")
     Call<UserDataResponse> userLogin(@Field("email") String email, @Field("password") String password);
 

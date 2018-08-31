@@ -41,7 +41,11 @@ public class ValidateCodeActivity extends AppCompatActivity {
                 if (verifyCode.equals(saveCode)){
                     Log.d("saved code ",""+saveCode);
                     Log.d("user input code",verifyCode);
-                } else {
+
+                    Intent intent = new Intent(ValidateCodeActivity.this, RegisterActivity.class);
+                    startActivity(intent);
+                } else
+                    {
                     Log.d("F saved code ","");
                     Log.d( " F user input code",""+verifyCode);
                     Log.d(" F code","false Please ENTER CODE THAT WAS SEND TO YOUR EMAIL");
