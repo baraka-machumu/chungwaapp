@@ -1,6 +1,7 @@
 package com.chungwaapp.barakamachumu.chungwaapp.Apiutilis;
 
 import com.chungwaapp.barakamachumu.chungwaapp.model.RegisterResponse;
+import com.chungwaapp.barakamachumu.chungwaapp.model.UserDataResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
