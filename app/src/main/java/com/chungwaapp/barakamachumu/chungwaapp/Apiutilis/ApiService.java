@@ -1,6 +1,7 @@
-package com.chungwaapp.barakamachumu.chungwaapp.Apiutilis;
+package com.chungwaapp.barakamachumu.chungwaapp.ApiUtilis;
 
 import com.chungwaapp.barakamachumu.chungwaapp.model.RegisterResponse;
+import com.chungwaapp.barakamachumu.chungwaapp.model.UserDataResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -13,4 +14,9 @@ public interface ApiService {
     @POST("user/register")
     Call<RegisterResponse> userRegister(@Field("email") String email);
 
+    @FormUrlEncoded
+    @POST("user/login")
+    Call<UserDataResponse> userLogin(@Field("email") String email,@Field("password") String password);
+
 }
+

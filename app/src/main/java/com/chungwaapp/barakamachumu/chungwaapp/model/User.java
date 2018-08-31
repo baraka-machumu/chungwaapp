@@ -5,6 +5,12 @@ import com.google.gson.annotations.SerializedName;
 
 public class User {
 
+    @SerializedName("success")
+    @Expose
+    private Integer success;
+    @SerializedName("message")
+    @Expose
+    private String message;
     @SerializedName("id")
     @Expose
     private Integer id;
@@ -21,6 +27,22 @@ public class User {
     @Expose
     private Integer seed;
 
+    public Integer getSuccess() {
+        return success;
+    }
+
+    public void setSuccess(Integer success) {
+        this.success = success;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -28,8 +50,6 @@ public class User {
     public void setId(Integer id) {
         this.id = id;
     }
-
-
 
     public String getEmail() {
         return email;
@@ -39,8 +59,6 @@ public class User {
         this.email = email;
     }
 
-
-
     public String getPhone() {
         return phone;
     }
@@ -48,7 +66,6 @@ public class User {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-
 
     public String getUsername() {
         return username;
@@ -58,8 +75,6 @@ public class User {
         this.username = username;
     }
 
-
-
     public Integer getSeed() {
         return seed;
     }
@@ -67,6 +82,4 @@ public class User {
     public void setSeed(Integer seed) {
         this.seed = seed;
     }
-
-
 }
