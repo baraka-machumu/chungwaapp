@@ -46,12 +46,6 @@ public class PhoneActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
-
-//                Intent intent = new Intent(PhoneActivity.this, RegisterActivity.class);
-//                startActivity(intent);
-
-
                 String emailData = email.getText().toString();
                 Log.d("response-register","email "+emailData);
 
@@ -59,7 +53,6 @@ public class PhoneActivity extends AppCompatActivity {
                 final int min = 10201;
                 final int max = 90000;
                 final String verificationCode = Integer.toString(new Random().nextInt((max - min) + 1) + min);
-
 //                final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(PhoneActivity.this);
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putString("verificationCode",verificationCode);
@@ -77,10 +70,12 @@ public class PhoneActivity extends AppCompatActivity {
 
                         String result = response.body().getSuccess().toString();
                         if (result.equals("true")){
-
                             Log.d("result success ",result);
                             String code = preferences.getString("verificationCode","");
                             Log.d("code number", ""+code);
+
+                            Intent intent = new Intent(PhoneActivity.this, ValidateCodeActivity.class);
+                            startActivity(intent);
 
                         } else {
                             Log.d("result fail",result);

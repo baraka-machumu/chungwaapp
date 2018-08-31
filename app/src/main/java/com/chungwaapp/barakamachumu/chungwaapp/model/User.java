@@ -8,19 +8,19 @@ public class User {
     @SerializedName("id")
     @Expose
     private Integer id;
-    @SerializedName("id")
-    @Expose
-    private String email;
     @SerializedName("email")
     @Expose
-    private String phone;
+    private String email;
     @SerializedName("phone")
     @Expose
-    private String username;
+    private String phone;
     @SerializedName("username")
     @Expose
-    private String verification_code;
+    private String username;
     @SerializedName("verification_code")
+    @Expose
+    private String verification_code;
+    @SerializedName("seed")
     @Expose
     private Integer seed;
     @SerializedName("seed")

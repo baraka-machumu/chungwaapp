@@ -30,8 +30,6 @@ TextView register;
                 startActivity(intent);
             }
         });
-
-
     }
 
     @Override
