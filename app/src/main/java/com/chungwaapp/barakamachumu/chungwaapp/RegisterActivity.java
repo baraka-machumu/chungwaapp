@@ -11,6 +11,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.chungwaapp.barakamachumu.chungwaapp.Apiutilis.ApiService;
 import com.chungwaapp.barakamachumu.chungwaapp.model.RegisterResponse;
@@ -28,6 +32,8 @@ public class RegisterActivity extends AppCompatActivity {
     EditText pswd;
     EditText pswd2;
     Button btn_register;
+    RadioGroup gender;
+    RadioButton radioSexButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,11 +46,19 @@ public class RegisterActivity extends AppCompatActivity {
         phone = findViewById(R.id.phone);
         pswd = findViewById(R.id.pswd);
         pswd2 = findViewById(R.id.pswd2);
+        gender = findViewById(R.id.gender);
         btn_register = findViewById(R.id.btn_register);
 
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+                // get selected radio button from radioGroup
+                int genderData = gender.getCheckedRadioButtonId();
+
+                // find the radiobutton by returned id
+                radioSexButton = findViewById(genderData);
 
                 String usernameData = username.getText().toString();
                 String phoneData = phone.getText().toString();
@@ -58,7 +72,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                 ApiService service = ApiNetworkServer.getClient().create(ApiService.class);
 
-                Call<RegisterResponse> registerResponse = service.userFinalRegister(usernameData, phoneData, passwordData);
+                Call<RegisterResponse> registerResponse = service.userFinalRegister(usernameData, genderData, phoneData, passwordData);
                 registerResponse.enqueue(new Callback<RegisterResponse>() {
                     @Override
                     public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
