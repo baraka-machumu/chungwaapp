@@ -14,6 +14,7 @@ import android.widget.EditText;
 import com.chungwaapp.barakamachumu.chungwaapp.Apiutilis.ApiService;
 import com.chungwaapp.barakamachumu.chungwaapp.model.RegisterResponse;
 import com.chungwaapp.barakamachumu.chungwaapp.network.ApiNetworkServer;
+import com.tumblr.remember.Remember;
 
 import java.util.Random;
 
@@ -54,10 +55,13 @@ public class PhoneActivity extends AppCompatActivity {
                 final int max = 90000;
                 final String verificationCode = Integer.toString(new Random().nextInt((max - min) + 1) + min);
 //                final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(PhoneActivity.this);
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.putString("verificationCode",verificationCode);
-                editor.putString("email", emailData);
-                editor.apply();
+//                SharedPreferences.Editor editor = preferences.edit();
+//                editor.putString("verificationCode",verificationCode);
+////                editor.putString("r", emailData);
+//                editor.apply();
+                Remember.putString("verificationCode",verificationCode);
+                Remember.putString("register_email",emailData);
+
 
                 ApiService service = ApiNetworkServer.getClient().create(ApiService.class);
 
@@ -73,6 +77,8 @@ public class PhoneActivity extends AppCompatActivity {
                             Log.d("result success ",result);
                             String code = preferences.getString("verificationCode","");
                             Log.d("code number", ""+code);
+
+                            Log.d("saved email", " "+Remember.getString("register_email",null));
 
                             Intent intent = new Intent(PhoneActivity.this, ValidateCodeActivity.class);
                             startActivity(intent);

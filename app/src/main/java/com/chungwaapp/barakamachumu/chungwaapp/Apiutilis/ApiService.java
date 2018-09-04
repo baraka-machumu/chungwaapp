@@ -20,7 +20,7 @@ public interface ApiService {
     Call<RegisterResponse> userFinalRegister(@Field("username") String username,
                                              @Field("gender") int gender,
                                         @Field("phone") String phone,
-                                             @Field("password") String pswd);
+                                             @Field("password") String pswd,@Field("email")String email);
 
     @FormUrlEncoded
     @POST("user/login")

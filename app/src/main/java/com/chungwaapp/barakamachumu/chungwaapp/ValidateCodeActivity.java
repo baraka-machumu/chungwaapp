@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.tumblr.remember.Remember;
+
 public class ValidateCodeActivity extends AppCompatActivity {
     EditText editvalidate;
     Button btnValidate;
@@ -32,8 +34,11 @@ public class ValidateCodeActivity extends AppCompatActivity {
         btnValidate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                String saveCode = prefs.getString("verificationCode", null);
+//                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+//                String saveCode = prefs.getString("verificationCode", null);
+
+                String saveCode = Remember.getString("verificationCode", null);
+
 
                 String verifyCode =  editvalidate.getText().toString();
                 Log.d("F saved code "," "+saveCode);
@@ -45,7 +50,7 @@ public class ValidateCodeActivity extends AppCompatActivity {
                     Intent intent = new Intent(ValidateCodeActivity.this, RegisterActivity.class);
                     startActivity(intent);
                 } else
-                    {
+                {
                     Log.d("F saved code ","");
                     Log.d( " F user input code",""+verifyCode);
                     Log.d(" F code","false Please ENTER CODE THAT WAS SEND TO YOUR EMAIL");
